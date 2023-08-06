@@ -1,5 +1,7 @@
-import { Schema, model } from "mongoose";
-import { IUser } from "./user.interface";
+import { Model, Schema, model } from "mongoose";
+import { IUser, IUserMethods } from "./user.interface";
+
+type UserModel = Model<IUser, {}, IUserMethods>;
 
 // creating schema using interface
 const userSchema = new Schema<IUser>({
@@ -64,3 +66,6 @@ const userSchema = new Schema<IUser>({
 const User = model<IUser>('User', userSchema);
 
 export default User;
+
+// instance methods -> instance er methods
+// class -> instance + methods -> instance methods
