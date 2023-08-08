@@ -5,6 +5,8 @@ export const createUserToDB = async (payload: IUser): Promise<IUser> => {
     const user = new User(payload);   // User = class   user = instance
     await user.save()  // build in instance method (another have custom instance method)
 
+    // user.fullName();  // custom instance methods
+
     return user;
 }
 
@@ -28,3 +30,16 @@ export const getUserByIdFromDB = async (payload: string): Promise<IUser | null> 
 
     return user;
 }
+
+
+export const getAdminUserFromDB = async () => {
+
+    const admins = await User.getAdminUsers();
+
+    return admins;
+}
+
+
+// static
+// class -> attach -> method -> directly class using class
+// User.getAdminUsers()
